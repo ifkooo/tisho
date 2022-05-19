@@ -68,16 +68,16 @@ export class userController {
         })
     }
 
-    login (req: Request, res: Response) {
-        const queryParams: loginQueryParams = req.query;
-        if (!queryParams.username || !queryParams.password) {
+    async login (req: Request, res: Response) {
+        let userData: loginQueryParams = req.body;
+        if (!userData.username || !userData.password) {
             return res.send({
                 status: 400,
                 message: "Wrong!"
             })
         }
         res.send({
-            status: 300,
+            status: 200,
             message: "Login successful"
         })
     }
